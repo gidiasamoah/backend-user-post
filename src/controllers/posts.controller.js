@@ -5,7 +5,6 @@ const createPost = async (req, res, next) => {
   try {
     const { title, text, user_id } = req.body;
 
-    
     const newPost = await PostService.addNewPost({ title, text, user_id });
 
     res.status(201).json({

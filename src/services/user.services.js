@@ -1,4 +1,4 @@
-const { addUser, findUserByEmail, findUserbyUsername } = require('../queries/users');
+const { addUser, findUserbyUsername } = require('../queries/users');
 const { runQuery } = require('../config/database.config')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');

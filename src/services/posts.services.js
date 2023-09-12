@@ -1,24 +1,20 @@
-const { addNewPost, fetchAllPost} = require('../queries/posts');
+const { addPost, fetchAllPost} = require('../queries/posts');
 const { runQuery } = require('../config/database.config');
 
 
 
-// Add a new post
-const addNewPost = async (body) => {
-    try {
-      const { title, text, user_id } = body;
-  
-      const newPost = await db.one(
-        'INSERT INTO posts(title, text, user_id) VALUES ($1, $2, $3) RETURNING *',
-        [title, text, user_id]
-      );
-  
-      return newPost;
-    } catch (error) {
-      // Handle any errors, e.g., database errors or validation errors
-      throw error;
-    }
-  };
+
+const addNewPost = async (userId, postTitle, postText) => {
+  try {
+    
+    const result = await runQuery(addPost, [postTitle, postText, userId]);
+
+    return result;
+  } catch (error) {
+    
+    throw error;
+  }
+};
 
 
 
